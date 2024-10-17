@@ -1,0 +1,96 @@
+// 'use strict'
+// this на что ссылается
+//глобальный конекст window специфичен для браузерной среды
+console.log(this)
+//в среде node вне  ф-и this ссылается на экспорты текущего модуля
+
+// this внутри функции - динамическая зависит от контекста исполнения
+
+function myFunction() {
+  console.log(this)
+}
+myFunction()
+
+// функция как метод в объекте
+const product = {
+  product: 'photo',
+  price: 100,
+  calc(discount = 0) {
+    console.log(this.price - (discount / 100) * this.price)
+  },
+}
+product.calc(20)
+
+// вызов ф-и с привязкой контекста call - apply привязывают контекст и вызывают ф-ю мгновенно
+function calcDiscount(age) {
+  if (age > 65) {
+    console.log(this.price / 2)
+  } else {
+    console.log(this.price)
+  }
+}
+const item = {
+  item: 'phone',
+  price: 100,
+}
+const metod = calcDiscount.bind(item, 67)
+metod()
+
+const student = {
+  stack: ['HTML'],
+  level: 1,
+  improvelLevel() {
+    this.level++
+    if (this.level === 2) {
+      this.stack.push('CSS')
+    }
+    if (this.level === 3) {
+      this.stack.push('JavaScript')
+    }
+    if (this.level === 4) {
+      this.stack.push('React')
+    }
+    if (this.level === 5) {
+      this.stack.push('Node JS')
+    }
+    if (this.level > 5) {
+      alert('Student')
+    }
+    return this
+  },
+}
+// console.log(student.improvelLevel())
+// student.improvelLevel()
+// student.improvelLevel()
+// student.improvelLevel()
+// student.improvelLevel()
+
+const dog = {
+  name: 'Чарли',
+  type: 'Собака',
+  domestic: true,
+  makeSound() {
+    return 'Гав-Гав'
+  },
+}
+
+const bird = {
+  name: 'Петя',
+  type: 'Воробей',
+  domestic: false,
+  makeSound() {
+    return 'Чик-чирик'
+  },
+}
+function makeDomestic(isDomestic) {
+  if (isDomestic === true) {
+    console.log(this)
+  } else {
+    // console.log(this)
+    alert(`${this.type} at name ${this.name} say ${this.makeSound()}`)
+  }
+}
+// makeDomestic.call(dog, true)
+makeDomestic.call(bird, [false])
+// const otherMetod = makeDomestic.bind(dog, true)
+// otherMetod()
