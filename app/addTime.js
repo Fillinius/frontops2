@@ -1,6 +1,5 @@
 let time = new Date()
 
-// document.write(`Time ${time}`)
 let nowHour = time.getHours()
 let greating
 if (nowHour >= 8 && nowHour <= 12) {
