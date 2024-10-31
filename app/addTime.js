@@ -11,4 +11,4 @@ if (nowHour >= 13 && nowHour <= 21) {
 if (nowHour >= 22 && nowHour <= 7) {
   greating = 'Good night'
 }
-document.write(`${greating} today - ${time.toLocaleDateString()}`)
+document.write(`${greating} сегодня - ${time.toLocaleDateString()}`)
