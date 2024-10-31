@@ -1,12 +1,10 @@
 {
   "name": "homework2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple page at HTML+little JS",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "Revaygin Vladimir",
   "license": "ISC"
 }
